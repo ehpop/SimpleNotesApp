@@ -8,6 +8,7 @@ class NotesAppApplicationTests {
 
 	@Test
 	void contextLoads() {
+		assert true;
 	}
 
 }
