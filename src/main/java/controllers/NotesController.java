@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import services.NoteService;
 
 import java.util.Collection;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -18,7 +19,7 @@ public class NotesController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    Collection<Note> findAll() {
+    Map<String, Note> findAll() {
         log.info("Found all notes: {}", noteService.findAll());
         return noteService.findAll();
     }

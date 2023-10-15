@@ -33,4 +33,21 @@ public class Note {
         this.title = note.getTitle();
         this.content = note.getContent();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (!(obj instanceof Note)) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        return this.getId().equals(((Note) obj).getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getId().hashCode();
+    }
 }

@@ -3,23 +3,24 @@ package repositories;
 import model.Note;
 
 import java.util.List;
+import java.util.Map;
 
 public interface NoteRepository {
-    public List<Note> getAllNotes();
+    Map<String, Note> getAllNotes();
 
-    public Note getNoteById(String id) throws NoteDoesNotExistException;
+    Note getNoteById(String id) throws NoteDoesNotExistException;
 
-    public void addNote (Note note);
+    void addNote(Note note);
 
-    public void updateNote (String id, Note note) throws NoteDoesNotExistException;
+    void updateNote(String id, Note note) throws NoteDoesNotExistException;
 
-    public void deleteNote (String id) throws NoteDoesNotExistException;
+    void deleteNote(String id) throws NoteDoesNotExistException;
 
-    public void deleteAllNotes();
+    void deleteAllNotes();
 
-    public void deleteAllNotesByUserId(String userId);
+    void deleteAllNotesByUserId(String userId);
 
-    public List<Note> getAllNotesByUserId(String userId);
+    List<Note> getAllNotesByUserId(String userId);
 
     class NoteDoesNotExistException extends Exception {
         public NoteDoesNotExistException(String message) {

@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import repositories.NoteRepository;
 
 import java.util.Collection;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ import java.util.Collection;
 public class NoteService {
     private final NoteRepository noteRepository;
 
-    public Collection<Note> findAll() {
+    public Map<String, Note> findAll() {
         return noteRepository.getAllNotes();
     }
 
