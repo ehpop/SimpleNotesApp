@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import services.NoteService;
 
 import java.util.Collection;
-import java.util.Map;
 
 @Slf4j
 @RestController
@@ -20,14 +19,15 @@ public class NotesController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    Map<String, Note> findAll() {
+    Iterable<Note> findAll() {
+        System.out.println("Finding all notes");
         log.info("Found all notes: {}", noteService.findAll());
         return noteService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    Note findById(@PathVariable @NotNull String id) {
+    Note findById(@PathVariable @NotNull Integer id) {
         log.info("Finding note by id {}", id);
         return noteService.findById(id);
     }
@@ -47,13 +47,13 @@ public class NotesController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void update(@PathVariable @NotNull String id, @RequestBody @NotNull Note note) {
+    void update(@PathVariable @NotNull Integer id, @RequestBody @NotNull Note note) {
         noteService.update(id, note);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void delete(@PathVariable @NotNull String id) {
+    void delete(@PathVariable @NotNull Integer id) {
         noteService.delete(id);
     }
 

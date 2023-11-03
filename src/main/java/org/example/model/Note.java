@@ -1,26 +1,33 @@
 package model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
 @Getter
+@Entity
+@NoArgsConstructor(force = true)
+@Table(name = "notes")
 public class Note {
     @Setter
     private String title;
     @Setter
     private String content;
     @Setter
-    private String id;
-    private final Date creationDate;
+    @Id
+    private Integer id;
+
     private final String userId;
 
     public Note(String title, String content, String userId) {
         this.title = title;
         this.content = content;
-        this.creationDate = new Date();
         this.userId = userId;
     }
 
@@ -28,7 +35,6 @@ public class Note {
     public String toString() {
         return "Title: " + this.title + "\n" +
                 "Content: " + this.content + "\n" +
-                "Creation Date: " + this.creationDate + "\n" +
                 "ID: " + this.id + "\n" +
                 "User ID: " + this.userId + "\n";
     }
