@@ -1,13 +1,13 @@
-package services;
+package org.example.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import model.Note;
+import org.example.model.Note;
+import org.example.repositories.NoteRepositoryPostgres;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import repositories.NoteRepositoryPostgres;
 
 import java.util.Collection;
 
@@ -16,6 +16,7 @@ import java.util.Collection;
 @Slf4j
 public class NoteService {
     public static final String NOTE_WITH_ID_WAS_NOT_FOUND = "Note with id %s was not found";
+    public static final String ID_OF_NOTE_SHOULD_NOT_BE_PROVIDED = "Id of Note should not be provided";
     private final NoteRepositoryPostgres noteRepository;
 
     public Iterable<Note> findAll() {
@@ -28,7 +29,7 @@ public class NoteService {
 
     public void add(@NotNull Note note) {
         if (note.getId() != null) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Id of Note should not be provided");
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, ID_OF_NOTE_SHOULD_NOT_BE_PROVIDED);
         }
 
         noteRepository.save(note);

@@ -6,10 +6,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-public class NotesAppApplication {
+public class NotesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NotesAppApplication.class, args);
+        SpringApplication.run(NotesApplication.class, args);
     }
 
 }
